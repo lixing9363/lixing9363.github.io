@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>动态规划 | XingBa的小站</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    <link rel="icon" href="/img/touxiang.jpg">
+    <meta name="description" content="python web linux">
+    <meta name="keywords" content="python web linux">
+    <meta name="theme-color" content="#11a8cd">
+    <link rel="preload" href="/assets/css/0.styles.ea3ddf7f.css" as="style"><link rel="preload" href="/assets/js/app.b6f65a3e.js" as="script"><link rel="preload" href="/assets/js/2.33bc8430.js" as="script"><link rel="preload" href="/assets/js/3.7b704132.js" as="script"><link rel="preload" href="/assets/js/18.8087d76c.js" as="script"><link rel="prefetch" href="/assets/js/10.cf0a89d3.js"><link rel="prefetch" href="/assets/js/11.a5d638b8.js"><link rel="prefetch" href="/assets/js/12.f00caec3.js"><link rel="prefetch" href="/assets/js/13.c45ff0c9.js"><link rel="prefetch" href="/assets/js/14.2cdac283.js"><link rel="prefetch" href="/assets/js/15.b7ac860d.js"><link rel="prefetch" href="/assets/js/16.36b6de9b.js"><link rel="prefetch" href="/assets/js/17.80a103fd.js"><link rel="prefetch" href="/assets/js/19.6363f2c3.js"><link rel="prefetch" href="/assets/js/20.d432b0ec.js"><link rel="prefetch" href="/assets/js/21.456523f7.js"><link rel="prefetch" href="/assets/js/22.9070a28a.js"><link rel="prefetch" href="/assets/js/23.ed21f0b3.js"><link rel="prefetch" href="/assets/js/24.4a2ddef7.js"><link rel="prefetch" href="/assets/js/25.eccc136d.js"><link rel="prefetch" href="/assets/js/26.59cfd167.js"><link rel="prefetch" href="/assets/js/27.b8ef844f.js"><link rel="prefetch" href="/assets/js/28.fc76684b.js"><link rel="prefetch" href="/assets/js/29.785ed3bb.js"><link rel="prefetch" href="/assets/js/30.20156fae.js"><link rel="prefetch" href="/assets/js/31.ddd0f5d4.js"><link rel="prefetch" href="/assets/js/32.1f246912.js"><link rel="prefetch" href="/assets/js/33.c794ffe7.js"><link rel="prefetch" href="/assets/js/34.74faf3db.js"><link rel="prefetch" href="/assets/js/35.b6703ea9.js"><link rel="prefetch" href="/assets/js/36.8e6d0b7a.js"><link rel="prefetch" href="/assets/js/37.4330e098.js"><link rel="prefetch" href="/assets/js/38.d4c13824.js"><link rel="prefetch" href="/assets/js/39.e65cadb1.js"><link rel="prefetch" href="/assets/js/4.0b57b934.js"><link rel="prefetch" href="/assets/js/40.e49e3820.js"><link rel="prefetch" href="/assets/js/41.a40494bb.js"><link rel="prefetch" href="/assets/js/42.4b72070f.js"><link rel="prefetch" href="/assets/js/43.00465667.js"><link rel="prefetch" href="/assets/js/44.05ad4390.js"><link rel="prefetch" href="/assets/js/45.04948dbc.js"><link rel="prefetch" href="/assets/js/46.bc66ee43.js"><link rel="prefetch" href="/assets/js/47.209f9ef7.js"><link rel="prefetch" href="/assets/js/48.502a7e63.js"><link rel="prefetch" href="/assets/js/49.e5a3ef3c.js"><link rel="prefetch" href="/assets/js/5.242c627e.js"><link rel="prefetch" href="/assets/js/50.756977ac.js"><link rel="prefetch" href="/assets/js/51.b28d5d0d.js"><link rel="prefetch" href="/assets/js/52.60e20e03.js"><link rel="prefetch" href="/assets/js/53.0f03b366.js"><link rel="prefetch" href="/assets/js/54.e5640666.js"><link rel="prefetch" href="/assets/js/55.f55db501.js"><link rel="prefetch" href="/assets/js/56.eddfc0b0.js"><link rel="prefetch" href="/assets/js/57.93da0f9c.js"><link rel="prefetch" href="/assets/js/58.2a312a21.js"><link rel="prefetch" href="/assets/js/59.11c774ef.js"><link rel="prefetch" href="/assets/js/6.1b50d200.js"><link rel="prefetch" href="/assets/js/60.4c563cd6.js"><link rel="prefetch" href="/assets/js/61.daf3ae53.js"><link rel="prefetch" href="/assets/js/62.59dd5ff0.js"><link rel="prefetch" href="/assets/js/63.75c17bad.js"><link rel="prefetch" href="/assets/js/64.00affb3b.js"><link rel="prefetch" href="/assets/js/65.23c93d0d.js"><link rel="prefetch" href="/assets/js/66.281f6b43.js"><link rel="prefetch" href="/assets/js/67.286f20a5.js"><link rel="prefetch" href="/assets/js/68.bedc28fe.js"><link rel="prefetch" href="/assets/js/69.c280d3af.js"><link rel="prefetch" href="/assets/js/7.52c85384.js"><link rel="prefetch" href="/assets/js/70.eb030069.js"><link rel="prefetch" href="/assets/js/71.04caf3e7.js"><link rel="prefetch" href="/assets/js/72.5dcb1960.js"><link rel="prefetch" href="/assets/js/73.d39e1b47.js"><link rel="prefetch" href="/assets/js/74.4cfbf776.js"><link rel="prefetch" href="/assets/js/75.397f704e.js"><link rel="prefetch" href="/assets/js/8.282c7b17.js"><link rel="prefetch" href="/assets/js/9.c9743bd8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ea3ddf7f.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/touxiang.jpg" alt="XingBa的小站" class="logo"> <span class="site-name can-hide">XingBa的小站</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">算法</a></div><div class="nav-item"><a href="/Django/" class="nav-link">Django</a></div><div class="nav-item"><a href="/Python/" class="nav-link">Python</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/lixing9363/my_blog_project" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/touxiang.jpg"> <div class="blogger-info"><h3>Xing Ba</h3> <span>python爱好者</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">算法</a></div><div class="nav-item"><a href="/Django/" class="nav-link">Django</a></div><div class="nav-item"><a href="/Python/" class="nav-link">Python</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/lixing9363/my_blog_project" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>链表</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/fe8f0e/" class="sidebar-link">单指针</a></li><li><a href="/pages/c7331c/" class="sidebar-link">快慢指针</a></li><li><a href="/pages/052df1/" class="sidebar-link">双指针</a></li><li><a href="/pages/b0f48e/" class="sidebar-link">滑动窗口</a></li><li><a href="/pages/dc26fc/" class="sidebar-link">反转链表</a></li><li><a href="/pages/8a3e43/" class="sidebar-link">遍历</a></li><li><a href="/pages/cd39d8/" class="sidebar-link">单调栈</a></li><li><a href="/pages/c5245c/" class="sidebar-link">其他</a></li></ul></section></li><li><a href="/pages/55ddf2/" aria-current="page" class="active sidebar-link">动态规划</a></li><li><a href="/pages/80f358/" class="sidebar-link">反转链表</a></li><li><a href="/pages/d8b159/" class="sidebar-link">回文链表</a></li><li><a href="/pages/d3b3c8/" class="sidebar-link">最长递增子序列</a></li><li><a href="/pages/9468dc/" class="sidebar-link">零钱兑换</a></li></ul> <div class="sidebar-slot sidebar-slot-bottom"><!-- 正方形 -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="3508773082"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div></aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-70a2d273><div class="articleInfo" data-v-70a2d273><ul class="breadcrumbs" data-v-70a2d273><li data-v-70a2d273><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-70a2d273></a></li> <li data-v-70a2d273><a href="/algorithm" title="算法-目录页" data-v-70a2d273>算法</a></li> <!----> <!----></ul> <div class="info" data-v-70a2d273><div title="作者" class="author iconfont icon-touxiang" data-v-70a2d273><a href="https://github.com/lixing9363" target="_blank" title="作者" class="beLink" data-v-70a2d273>xingba</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-70a2d273><a href="javascript:;" data-v-70a2d273>2021-08-27</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><!----> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">
+          动态规划
+        </h1> <div class="page-slot page-slot-top"><!-- 固定100% * 90px可显示，max-height:90px未见显示-->
+     <ins class="adsbygoogle"
+          style="display:inline-block;width:100%;max-height:90px"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="6625304284"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div> <div class="theme-vdoing-content content__default"><div class="language-python line-numbers-mode"><pre class="language-python"><code>
+<span class="token comment"># 例子1：</span>
+<span class="token comment"># 剑指Offer（第二版）面试题14：剪绳子</span>
+<span class="token comment"># 给你一根长度为n的绳子，请把绳子剪成m段 (m和n都是整数，n&gt;1并且m&gt;1)每段绳子的长度记为k[0],k[1],…,k[m].请问k[0]k[1]…*k[m]可能的最大乘积是多少？</span>
+
+<span class="token comment"># 分析:</span>
+<span class="token comment"># f(1) = 0</span>
+<span class="token comment"># f(2) = 1*1 = 1  如果不剪,则为2</span>
+<span class="token comment"># f(3) = 1*2 = 2  如果不剪,则为3</span>
+<span class="token comment"># f(4) = max(1*3,1*1*2,2*2) = 4</span>
+<span class="token comment"># ...</span>
+<span class="token comment"># 可以看出,当长度为1,2,3时,这是特殊值,如果不剪则更大,当给定的值大于3时,我们把2,3作为不剪的,则可以得出</span>
+
+<span class="token comment"># f(n) = max(f(1)*f(n-1),f(2)*f(n-2)...f(n//2)*f(n-n//2))</span>
+<span class="token comment">#  那么,我们用一个列表来存每一个对应的值,索引对应的就是绳子长度n</span>
+<span class="token keyword">def</span> <span class="token function">cut</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">2</span>
+    <span class="token comment"># 构造一个数组</span>
+    res_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token comment"># 设置数组初始的1,2,3的值</span>
+    res_list<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+    res_list<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
+    res_list<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3</span>
+    <span class="token comment"># 从4开始</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">max</span> <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> i <span class="token operator">//</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            tmp <span class="token operator">=</span> res_list<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">*</span> res_list<span class="token punctuation">[</span>i <span class="token operator">-</span> j<span class="token punctuation">]</span>
+            <span class="token keyword">if</span> <span class="token builtin">max</span> <span class="token operator">&lt;</span> tmp<span class="token punctuation">:</span>
+                <span class="token builtin">max</span> <span class="token operator">=</span> tmp
+        res_list<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">max</span>
+    <span class="token keyword">return</span> res_list<span class="token punctuation">[</span>n<span class="token punctuation">]</span>
+
+
+<span class="token comment"># 例子2：</span>
+<span class="token comment"># 跳台阶问题</span>
+<span class="token comment"># 一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个n级台阶总共有多少种跳法。</span>
+
+<span class="token comment"># 分析:</span>
+<span class="token comment"># f(1) = 1</span>
+<span class="token comment"># f(2) = p(2) + p(1+1) = 1+1 = 2</span>
+<span class="token comment"># f(3) = p(1+2) + p(1+1+1) + p(2+1) = 3</span>
+<span class="token comment"># ...</span>
+<span class="token comment"># 很明显可以看出:</span>
+<span class="token comment"># n级台阶的跳法是 (n-1种跳法) + (n-2种跳法)</span>
+<span class="token keyword">def</span> <span class="token function">jump</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">2</span>
+    rs_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    rs_list<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+    rs_list<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        rs_list<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> rs_list<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> rs_list<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> rs_list<span class="token punctuation">[</span>n<span class="token punctuation">]</span>
+
+
+<span class="token comment"># 题目描述:</span>
+<span class="token comment"># 给定一个正整数，我们可以定义出下面的公式:</span>
+<span class="token comment"># N=a[1]+a[2]+a[3]+…+a[m];</span>
+<span class="token comment"># a[i]&gt;0,1&lt;=m&lt;=N;</span>
+<span class="token comment"># 对于一个正整数，求解满足上面公式的所有算式组合，如，对于整数 4 :</span>
+<span class="token comment">#</span>
+<span class="token comment"># 4 = 4;</span>
+<span class="token comment"># 4 = 3 + 1;</span>
+<span class="token comment"># 4 = 2 + 2;</span>
+<span class="token comment"># 4 = 2 + 1 + 1;</span>
+<span class="token comment"># 4 = 1 + 1 + 1 + 1;</span>
+<span class="token comment"># 所以上面的结果是 5 。</span>
+<span class="token comment"># 注意：对于 “4 = 3 + 1” 和 “4 = 1 + 3” ，这两处算式实际上是同一个组合!</span>
+
+<span class="token comment"># 分析:</span>
+
+<span class="token comment"># 我们定义一个函数:p(a,b)</span>
+<span class="token comment"># a表示组合中最大的数</span>
+<span class="token comment"># b表示对应的整数n</span>
+<span class="token comment"># 如: f(4) = p(1,4) + p(2,4) + p(3,4) + p(4,4)</span>
+<span class="token comment">#     f(n) = p(1,n) + p(2,n) +..+p(n,n)</span>
+<span class="token comment"># 找规律:</span>
+<span class="token comment"># p(5,15) = p(5,10) + p(4,10) + .. +p(1,10)</span>
+<span class="token comment"># p(4,14) = p(4,10) + p(3,10) +...+ p(1,10)</span>
+<span class="token comment"># ...</span>
+<span class="token comment"># 得出 p(5,15) = p(5,10) + p(4,14)</span>
+<span class="token comment"># 可得 p(m,n) = p(m,n-m) + p(m-1,n-1)</span>
+
+<span class="token keyword">def</span> <span class="token function">part</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    result <span class="token operator">=</span> <span class="token number">0</span>
+    value <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> i <span class="token operator">==</span> j <span class="token keyword">or</span> i <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                value<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+            <span class="token keyword">elif</span> i <span class="token operator">&gt;</span> j<span class="token punctuation">:</span>
+                value<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                value<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> value<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> i<span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">+=</span> value<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span>
+    <span class="token keyword">return</span> result
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>part<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br></div></div></div></div> <div class="page-slot page-slot-bottom"><!-- 横向自适应 -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="6620245489"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div> <div class="page-edit"><div class="edit-link"><a href="https://github.com/lixing9363/my_blog_project/edit/main/docs/01.算法/11.动态规划.md" target="_blank" rel="noopener noreferrer">编辑</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----> <!----></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/c5245c/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">其他</div></a> <a href="/pages/80f358/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">反转链表</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/c5245c/" class="prev">其他</a></span> <span class="next"><a href="/pages/80f358/">反转链表</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/d9e0e4/"><div>python----生成hash密码算法</div></a> <span>08-27</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/88e076/"><div>RESTful -Representational State Transfer---------------只用在前后端分离场景下后端API的设计</div></a> <span>08-27</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/5087e2/"><div>flask----jquery+ajax上传文件</div></a> <span>08-27</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:545686004@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/lixing9363" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2020-2021
+    <span>Xing Ba</span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <div class="custom-html-window custom-html-window-rb" style="display:;"><div class="custom-wrapper"><i class="close-but">×</i> <div><!-- 固定160*160px -->
+      <ins class="adsbygoogle"
+          style="display:inline-block;max-width:160px;max-height:160px"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="8377369658"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      </div></div></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.b6f65a3e.js" defer></script><script src="/assets/js/2.33bc8430.js" defer></script><script src="/assets/js/3.7b704132.js" defer></script><script src="/assets/js/18.8087d76c.js" defer></script>
+  </body>
+</html>
